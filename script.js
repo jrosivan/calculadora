@@ -73,7 +73,7 @@ const operarDecimal = (event) => {
 document.querySelector("#decimal").addEventListener("click", operarDecimal);
 
 const invertSignal = () => {
-    s = display.textContent;
+    s = display.textContent.replace(/\b0*((\d+))\b/g, "$1") ; // 00 à esquerda, o EVAL entende como OCTAL!
     clearCalc();     
     updateDisplay(String(eval(`${s.replace(",",".") + ' * (-1)'}`)).replace(".",","));
 }
